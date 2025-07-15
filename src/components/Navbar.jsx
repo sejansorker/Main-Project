@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Container from './Container'
 import { RiMenuSearchFill } from 'react-icons/ri'
 import { IoCart, IoSearch } from 'react-icons/io5'
@@ -6,38 +6,113 @@ import { FaBars, FaUser } from 'react-icons/fa'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import { MdKeyboardArrowRight } from 'react-icons/md'
 import { RxCross2 } from 'react-icons/rx'
+import Div from "../assets/div.png"
 
 
 
 const Navbar = () => {
-    let [show, setShow] = useState(false)
-    let [info, setInfo] =useState(false)
-    let [out, setOut] = useState(false)
+    let [cateShow, setCateShow] = useState(false)
+    let [accShow, setAccShow] = useState(false)
+    let [bccShow, setBccShow] = useState(false)
+    let cateRef = useRef()
+    let accRef = useRef()
+    let bccRef = useRef()
+    useEffect(() => {
+        document.addEventListener("click", (e) => {
+            if (cateRef.current.contains(e.target) == true) {
+                setCateShow(!cateShow)
+            } else {
+                setCateShow(false)
+            }
+        })
+    }, [cateShow])
+   useEffect(()=>{
+        document.addEventListener("click",(e)=>{
+           if(accRef.current.contains(e.target) ==true){
+             setAccShow(!accShow)
+           } else{
+            setAccShow(false)
+           }
+         
+        })
+   },[accShow])
+   useEffect(()=>{
+         document.addEventListener("click",(e)=>{
+            if(bccRef.current.contains(e.target)==true){
+               setBccShow(!bccShow)
+            }
+            else{
+               setBccShow(false)
+            }
+         })
+   },[bccShow])
     return (
         <nav className="bg-[#F5F5F3] py-[20px]  ">
             <Container>
                 <div className="flex items-center flex-wrap">
-                    <div className="w-1/4  ">
-                        <div className="flex items-center gap-x-[10px] relative">
-                            <div className="" onClick={() => setShow(!show)}>
+                    <div className="w-1/4  relative">
+                        <div className="flex items-center  gap-x-[10px] " ref={cateRef}>
+                            <div className="" >
                                 <RiMenuSearchFill className='text-[#262626] cursor-pointer' />
                             </div>
-                            <div className="absolute lg:top-[40px]  top-[30px] lg:right-[50px] right-[-50px] z-10 lg:w-[263px] ">
-                                <ul className={`transform transition-all origin-top duration-800 ease-in-out ${show == true ? "bg-[#2D2D2D]   scale-y-100 pointer-events-auto" : "opacity-0 scale-y-0 pointer-events-none"} `}>
-                                    <li className='border-b-1 border-[rgba(255,255,255,0.7)] flex items-center lg:gap-[145px]'><a className='hover:text-white lg:py-[16px] text-[14px] font-dm font-normal inline-block pl-[20px] text-[rgba(255,255,255,0.7)]' href="#">Accesories</a><MdKeyboardArrowRight className='hover:text-white text-[rgba(255,255,255,0.7)] text-[14px]' /></li>
+                            <h4 className='font-dm cursor-pointer font-normal text-[14px] text-[#262626]'>Shop by Category</h4>
+                        </div>
+                        <div className={`transform transition-all z-1 absolute top-[55px] left-0  origin-top duration-600 ease-in-out ${cateShow ? " scale-y-100  pointer-events-auto" : " scale-y-0 pointer-events-none"}`}>
 
-                                    <li className='border-b-1 border-[rgba(255,255,255,0.7)] flex items-center lg:gap-[157px]'><a className='hover:text-white lg:py-[16px] text-[14px] font-dm font-normal inline-block pl-[20px]  text-[rgba(255,255,255,0.7)]' href="#">Furniture</a><MdKeyboardArrowRight className='   hover:text-white text-[rgba(255,255,255,0.7)] text-[14px] ' /></li>
+                            <div className={`bg-[#262626] w-[263px]   `} >
+                                <ul >
+                                    <li className='py-[16px] group flex relative items-center gap-[145px] pl-[21px] text-[14px] font-dm  font-normal border-b-1 border-[rgba(255,255,255,0.7)] hover:text-white hover:pl-[30px] duration-300 ease-in-out  text-[rgba(255,255,255,0.7)] '>Accesories <MdKeyboardArrowRight />
+                                        <ul className=" absolute duration-300 top-0 left-[100%] opacity-0 invisible group-hover:opacity-100 group-hover:visible px-[40px] py-[19px] w-[150px] bg-[#F5F5F3]">
+                                            <li className='text-[#262626] hover:text-[#262626] hover:font-bold  pb-[15px] font-dm text-[16px] font-bold'>Phones</li>
+                                            <li className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[12px] font-dm text-[14px] font-bold'>Phones1</li>
+                                            <li  className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[12px] font-dm text-[14px] font-bold'>Phones2</li>
+                                            <li className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[12px] font-dm text-[14px] font-bold'>Phones3</li>
+                                            <li className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[12px] font-dm text-[14px] font-bold'>Phones4</li>
+                                            <li className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[12px] font-dm text-[14px] font-bold'>Phones5</li>
+                                            <li className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[5px] font-dm text-[14px] font-bold'>Phones6</li>
+                                            
+                                        </ul>
+                                    </li>
+                                    <li className='py-[16px] relative  group flex items-center gap-[157px]  pl-[21px] text-[14px] font-dm  font-normal border-b-1 border-[rgba(255,255,255,0.7)] hover:text-white hover:pl-[30px] duration-300 ease-in-out  text-[rgba(255,255,255,0.7)]'>Furniture < MdKeyboardArrowRight />
+                                     <ul className=" absolute duration-300 top-[-55px] left-[100%] opacity-0 invisible group-hover:opacity-100 group-hover:visible px-[40px] py-[19px] w-[150px] bg-[#F5F5F3]">
+                                            <li className='text-[#262626] hover:text-[#262626] hover:font-bold  pb-[15px] font-dm text-[16px] font-bold'>Computers</li>
+                                            <li className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[12px] font-dm text-[14px] font-bold'>Computers1</li>
+                                            <li  className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[12px] font-dm text-[14px] font-bold'>Computers2</li>
+                                            <li className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[12px] font-dm text-[14px] font-bold'>Computers3</li>
+                                            <li className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[12px] font-dm text-[14px] font-bold'>Computers4</li>
+                                            <li className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[12px] font-dm text-[14px] font-bold'>Computers5</li>
+                                            <li className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[5px] font-dm text-[14px] font-bold'>Computers6</li>
+                                            
+                                        </ul>
+                                    </li>
+                                    <li className='py-[16px] flex group items-center relative gap-[144px]  pl-[21px] text-[14px] font-dm  font-normal border-b-1 border-[rgba(255,255,255,0.7)] hover:text-white hover:pl-[30px] duration-300 ease-in-out  text-[rgba(255,255,255,0.7)]'>Electronics < MdKeyboardArrowRight />
+                                      <ul className=" absolute duration-300 top-[-105px] left-[100%] opacity-0 invisible group-hover:opacity-100 group-hover:visible px-[40px] py-[19px] w-[220px] bg-[#F5F5F3]">
+                                            <li className='text-[#262626] hover:text-[#262626] hover:font-bold  pb-[15px] font-dm text-[16px] font-bold'>Smart watches</li>
+                                            <li className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[12px] font-dm text-[14px] font-bold'>Smart watches1</li>
+                                            <li  className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[12px] font-dm text-[14px] font-bold'>Smart watches2</li>
+                                            <li className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[12px] font-dm text-[14px] font-bold'>Smart watches3</li>
+                                            <li className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[12px] font-dm text-[14px] font-bold'>Smart watches4</li>
+                                            <li className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[12px] font-dm text-[14px] font-bold'>Smart watches5</li>
+                                            <li className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[4px] font-dm text-[14px] font-bold'>Smart watches6</li>
+                                            
+                                        </ul>
+                                    </li>
+                                    <li className='py-[16px] relative  group flex items-center gap-[165px]  pl-[21px] text-[14px] font-dm  font-normal border-b-1 border-[rgba(255,255,255,0.7)] hover:text-white hover:pl-[30px] duration-300 ease-in-out  text-[rgba(255,255,255,0.7)]'>Clothes < MdKeyboardArrowRight />
+                                      <ul className=" absolute duration-300 top-[-163px] left-[100%] opacity-0 invisible group-hover:opacity-100 group-hover:visible px-[40px] py-[19px] w-[150px] bg-[#F5F5F3]">
+                                            <li className='text-[#262626] hover:text-[#262626] hover:font-bold  pb-[15px] font-dm text-[16px] font-bold'>Cameras</li>
+                                            <li className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[12px] font-dm text-[14px] font-bold'>Cameras1</li>
+                                            <li  className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[12px] font-dm text-[14px] font-bold'>Cameras2</li>
+                                            <li className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[12px] font-dm text-[14px] font-bold'>Cameras3</li>
+                                            <li className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[12px] font-dm text-[14px] font-bold'>Cameras4</li>
+                                            <li className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[12px] font-dm text-[14px] font-bold'>Cameras5</li>
+                                            <li className='text-[#767676] hover:text-[#262626] hover:font-bold pb-[7px] font-dm text-[14px] font-bold'>Cameras6</li>                                           
+                                        </ul>
+                                    </li>
+                                    <li className='py-[16px]  flex items-center gap-[180px]  pl-[21px] text-[14px] font-dm  font-normal border-b-1 border-[rgba(255,255,255,0.7)] hover:text-white hover:pl-[30px] duration-300 ease-in-out  text-[rgba(255,255,255,0.7)]'>Bags < MdKeyboardArrowRight /></li>
 
-                                    <li className='border-b-1 border-[rgba(255,255,255,0.7)] flex items-center lg:gap-[145px]'><a className=' hover:text-white lg:py-[16px] text-[14px] font-dm font-normal inline-block pl-[20px] text-[rgba(255,255,255,0.7)]' href="#">Electronics</a><MdKeyboardArrowRight className='hover:text-white text-[rgba(255,255,255,0.7)] text-[14px] ' /></li>
-                                    
-                                    <li className='border-b-1 border-[rgba(255,255,255,0.7)] flex items-center lg:gap-[165px]'><a className='hover:text-white lg:py-[16px] text-[14px] font-dm font-normal inline-block pl-[20px] text-[rgba(255,255,255,0.7)]' href="#">Clothes</a><MdKeyboardArrowRight className='hover:text-white text-[rgba(255,255,255,0.7)] text-[14px] ' /></li>
-                                    
-                                    <li className='border-b-1 border-[rgba(255,255,255,0.7)] flex items-center lg:gap-[179px]'><a className='hover:text-white lg:py-[16px] text-[14px] font-dm font-normal inline-block pl-[20px] text-[rgba(255,255,255,0.7)]' href="#">Bags</a><MdKeyboardArrowRight className='hover:text-white text-[rgba(255,255,255,0.7)] text-[14px] ' /></li>
-                                    
-                                    <li className='border-b-1 border-[rgba(255,255,255,0.7)] flex items-center lg:gap-[102px]'><a className='hover:text-white lg:py-[16px] text-[14px] font-dm font-normal inline-block pl-[20px] text-[rgba(255,255,255,0.7)]' href="#">Home appliances</a><MdKeyboardArrowRight className='hover:text-white text-[rgba(255,255,255,0.7)] text-[14px] ' /></li>
                                 </ul>
                             </div>
-                            <h4 className='font-dm font-normal text-[14px] text-[#262626]'>Shop by Category</h4>
+
                         </div>
                     </div>
                     <div className="w-2/4 ">
@@ -49,53 +124,52 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div className="w-1/4">
-                        <div className="flex justify-end gap-x-[25px] relative">
-                            <div className="flex gap-x-[7px]" onClick={()=>setInfo(!info)}>
+                        <div className="flex justify-end gap-x-[25px] relative ">
+                            <div className="flex gap-x-[7px] " ref={accRef}>
                                 <FaUser className='text-[#262626] cursor-pointer' />
                                 <IoMdArrowDropdown className='text-[#262626] cursor-pointer ' />
                             </div>
-                            <div className="absolute top-[30px] right-[50px] z-10">
-                                <ul className={`duration-300 ease-in-out ${info==true ? "": "opacity-0"}`}>
-                                    <li ><a className='bg-black text-[14px] font-dm font-bold text-white inline-block py-[15px] px-[58px]' href="#">My Account</a></li>
-                                    <li><a className='bg-[#F5F5F3] text-[14px] font-dm font-bold text-[#262626] inline-block py-[15px] pl-[72px] pr-[71px]' href="#">Log Out</a></li>
+                            <div className=" " ref={bccRef}>
+                                <IoCart className="text-[#262626] cursor-pointer" />
+                            </div>
+                            {accShow &&
+                            <div className="w-[200px] bg-[#262626] absolute top-[30px] right-[45px]" >
+                                <ul>
+                                    <li className='py-[16px] text-center text-[14px] font-bold font-dm cursor-pointer text-white  hover:bg-white duration-500 ease-in-out hover:text-[#262626]'>My Account</li>
+                                    <li className='py-[16px] text-center text-[14px] font-bold font-dm cursor-pointer text-white hover:bg-white duration-500 ease-in-out hover:text-[#262626]'>Log Out</li>
                                 </ul>
                             </div>
-                            <div className="relative duration-1000 ease-in-out ">
-                                <IoCart className="text-[#262626]   cursor-pointer" onClick={()=>setOut(!out)} />
-                                <div className={` absolute  w-[360px] top-[35px] left-[-343px]  border-1 border-[#979797]  ${out==true ? " " : "hidden"}` }>
-                                  
-                                    <div className="flex items-center  bg-[#979797]">
-                                        <div className="h-[80px] w-[80px] m-[20px] bg-[#D8D8D8]">
-                                            
-                                        </div>
-                                        <div className="">
-                                            <h4 className='text-[14px]'>Black Smart Watch</h4>
-                                            <a href="#">$44.00</a>
-                                        </div>
-                                        <div className="pl-[88px]" onClick={()=>setOut(false)}>
-                                               
-                                             <RxCross2 className='cursor-pointer'/>
-                                        </div>
-                                        
+                             }
+                             {bccShow &&
+                             <div className="absolute top-[45px] right-0 w-[358px]">
+                                <div className="bg-[#F5F5F3] hover:bg-white duration-300 ease-in-out py-[20px] pl-[20px] flex items-center">
+                                    <div className=""><img src={Div} alt="" /></div>
+                                    <div className="pl-[20px] pr-[73px]">
+                                        <h4 className='font-dm font-bold text-[14px] text-[#262626]'>Black Smart Watch</h4>
+                                        <p className='font-dm pt-[10px] font-bold text-[14px] text-[#262626]'>$44.00</p>
                                     </div>
-                                    <div className="p-[20px] ">
-                                        <h4 className='pb-[13px]'>Subtotal: $44.00</h4>
-                                        <a href="#" className='py-[16px] text-[14px] font-bold font-dm px-[41px] inline-block border-2 border-[#2B2B2B] text-black'>View Cart</a>
-                                        <a href="#" className='py-[17px] ml-[21px] text-[14px] font-bold font-dm px-[41px] inline-block  bg-[#262626] text-white'>Checkout</a>
+                                    <div className="">
+                                        <RxCross2/>
                                     </div>
                                 </div>
-                            </div>
+                                <div className="bg-[#F5F5F3] hover:bg-white duration-300 ease-in-out pl-[20px] pb-[20px]">
+                                    <div className="py-[14px] ">
+                                        <h4 className='font-dm font-bold text-[16px] text-[#262626]'><span className='text-[#767676]'>Subtotal:</span> $44.00</h4>
+                                    </div>
+                                    <div className=" hover:bg-white">
+                                        <ul className='flex gap-[20px] '>
+                                            <li className='py-[16px] border-2 ease-in-out duration-500 hover:bg-black hover:text-white border-[#2B2B2B] px-[40px] font-bold text-[14px] text-[#262626] font-dm'>View Cart</li>
+                                            <li className='py-[16px]  border-2 ease-in-out duration-500 hover:bg-black hover:text-white border-[#2B2B2B] px-[43px] font-bold text-[14px] text-[#262626] font-dm'>Checkout</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                             </div>
+                             }
                         </div>
                     </div>
                 </div>
             </Container>
         </nav>
-
-
-
-
-
-
 
     )
 }

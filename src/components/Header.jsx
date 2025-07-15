@@ -25,7 +25,7 @@ const Header = () => {
           </div>
         </div>
         <div className="lg:hidden absolute top-[20px] right-[10px]" onClick={() => setShow(!show)}>
-          {show ? <RxCross2 /> : <FaBars />}
+          {show ? <RxCross2 className='cursor-pointer'/> : <FaBars className='cursor-pointer'/>}
         </div>
     </div>
       </Container>

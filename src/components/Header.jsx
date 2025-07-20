@@ -6,16 +6,17 @@ import { FaBars } from 'react-icons/fa'
 const Header = () => {
   let [show, setShow] = useState(false)
   return (
-    <Container>
-        <div className={`lg:flex py-[20px]`}>
-        <div className="w-1/3">
+        <div className={` sticky py-[20px]  top-0  z-10 bg-[#FFFFFF]`}>
+        <Container>
+        <div className="lg:flex ">
+          <div className="w-1/3">
           <div className="">
             <img src={Logo} alt="" />
           </div>
         </div>
-        <div className="lg:w-2/3 w-full">
+        <div className="lg:w-2/3 w-full overflow-hidden">
           <div className="">
-            <ul className={`lg:flex gap-x-10 lg:py-0 py-[10px]  lg:text-start text-center duration-500 ease-in-out ${show == true ? " bg-[rgba(120,185,181,0.33)] lg:mt-0 mt-3" : " lg:mt-0 mt-[-170px]"}`}>
+            <ul className={`lg:flex gap-x-10 lg:py-0 py-[10px]  lg:text-start text-center duration-500 ease-in-out ${show == true ? " bg-[rgba(120,185,181,0.33)] lg:mt-0 mt-3" : "  lg:mt-0 mt-[-190px]"}`}>
               <li><a href="#" className='font-dm text-[#767676] font-normal text-[14px] hover:text-[#262626]'>Home</a></li>
               <li><a href="#" className='font-dm text-[#767676] font-normal text-[14px] hover:text-[#262626]'>Shop</a></li>
               <li><a href="#" className='font-dm text-[#767676] font-normal text-[14px] hover:text-[#262626]'>About</a></li>
@@ -27,8 +28,9 @@ const Header = () => {
         <div className="lg:hidden absolute top-[20px] right-[10px]" onClick={() => setShow(!show)}>
           {show ? <RxCross2 className='cursor-pointer'/> : <FaBars className='cursor-pointer'/>}
         </div>
-    </div>
+        </div>
       </Container>
+    </div>
   )
 }
 

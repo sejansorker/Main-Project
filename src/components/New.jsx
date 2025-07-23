@@ -9,7 +9,7 @@ import { MdOutlineArrowRightAlt } from 'react-icons/md'
 function SampleNextArrow(props) {
   const {  onClick } = props;
   return (
-    <div className='h-[64px] w-[64px] bg-[rgba(151,151,151,0.53)] hover:bg-[#979797] hover:text-black cursor-pointer z-10 text-white absolute top-[115px] right-0 rounded-full flex justify-center items-center'
+    <div className='h-[64px] w-[64px] bg-[rgba(151,151,151,0.53)] hover:bg-[#979797] hover:text-black cursor-pointer z-10 text-white absolute top-[115px] right-[10px] rounded-full flex justify-center items-center'
       onClick={onClick}
     > <FaLongArrowAltRight /></div>
   );
@@ -29,10 +29,19 @@ const New = () => {
     slidesToScroll: 1,
      nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 450,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          
+        }
+      }
+      
+    ]
   };
     let data =useContext(ApiProduct)
-    
-    
   return (
     <div>
          <Container>
@@ -43,10 +52,10 @@ const New = () => {
                  {data.map((item,index)=>(
                  <div key={index} className="!w-[96%]">
                 <div className="relative group ">
-                     <div className="">
+                     <div className="bg-[#F9F9F9]">
                     <img src={item.thumbnail} alt="" />
                  </div>
-                 <div className="bg-white pr-[20px] h-[0] z-100 overflow-hidden group-hover:h-[150px] duration-500 ease-in-out absolute bottom-0 right-0 w-full">
+                 <div className="bg-white pr-[20px] h-[0] z-100 overflow-hidden group-hover:h-[150px] duration-400 ease-in-out absolute bottom-0 right-0 w-full">
                     <ul>
                         <li className='flex items-center text-[#767676] hover:text-[#262626] cursor-pointer text-[16px] font-bold font-dm  justify-end pt-[25px] gap-[15px]'>Add to Wish List <FaHeart /></li>
                         <li className='flex items-center text-[#767676] hover:text-[#262626] cursor-pointer text-[16px] font-bold font-dm  justify-end py-[20px] gap-[15px]'>Compare <IoGitCompare /></li>

@@ -9,6 +9,17 @@ import { HiSquares2X2 } from 'react-icons/hi2'
 import { FaHeart, FaShoppingCart, FaThList } from 'react-icons/fa'
 import { IoGitCompare } from 'react-icons/io5'
 import Cup from "../assets/cup.png"
+import Cup1 from "../assets/cup1.png"
+import Cup2 from "../assets/cup2.png"
+import Cup3 from "../assets/cup3.png"
+import Cup4 from "../assets/cup-4.png"
+import Cup5 from "../assets/cup5.png"
+import Cup6 from "../assets/cup6.png"
+import Cup7 from "../assets/cup7.png"
+import Cup8 from "../assets/cup8.png"
+import Cup9 from "../assets/cup9.png"
+import Cup10 from "../assets/cup10.png"
+import Cup11 from "../assets/cup11.png"
 
 const Shop = () => {
     let [cateShow, SetcateShow] = useState(false)
@@ -217,10 +228,6 @@ const Shop = () => {
                             }
                         </div>
                     </div>
-
-
-
-
                     <div className="w-9/12 pl-[40px] ">
                         <div className="flex pb-[60px]">
                             <div className="flex gap-[12px] ">
@@ -288,7 +295,7 @@ const Shop = () => {
                             <div className="w-[31%] pb-[50px] ">
                                 <div className="  relative group">
                                     <div className="bg-[#F9F9F9]">
-                                        <img src={Cup} alt="" />
+                                        <img src={Cup1} alt="" />
                                     </div>
                                     <div className="bg-white pr-[20px] absolute bottom-0 right-0 w-full h-[0] z-100 overflow-hidden   group-hover:h-[150px] duration-500 ease-in-out">
                                         <ul>
@@ -312,7 +319,7 @@ const Shop = () => {
                             <div className="w-[31%] pb-[50px] ">
                                 <div className="  relative group">
                                     <div className="bg-[#F9F9F9]">
-                                        <img src={Cup} alt="" />
+                                        <img src={Cup2} alt="" />
                                     </div>
                                     <div className="bg-white pr-[20px] absolute bottom-0 right-0 w-full h-[0] z-100 overflow-hidden   group-hover:h-[150px] duration-500 ease-in-out">
                                         <ul>
@@ -336,7 +343,7 @@ const Shop = () => {
                             <div className="w-[31%] pb-[50px] ">
                                 <div className="  relative group">
                                     <div className="bg-[#F9F9F9]">
-                                        <img src={Cup} alt="" />
+                                        <img src={Cup3} alt="" />
                                     </div>
                                     <div className="bg-white pr-[20px] absolute bottom-0 right-0 w-full h-[0] z-100 overflow-hidden   group-hover:h-[150px] duration-500 ease-in-out">
                                         <ul>
@@ -360,7 +367,7 @@ const Shop = () => {
                             <div className="w-[31%] pb-[50px] ">
                                 <div className="  relative group">
                                     <div className="bg-[#F9F9F9]">
-                                        <img src={Cup} alt="" />
+                                        <img src={Cup4} alt="" />
                                     </div>
                                     <div className="bg-white pr-[20px] absolute bottom-0 right-0 w-full h-[0] z-100 overflow-hidden   group-hover:h-[150px] duration-500 ease-in-out">
                                         <ul>
@@ -384,7 +391,7 @@ const Shop = () => {
                             <div className="w-[31%] pb-[50px] ">
                                 <div className="  relative group">
                                     <div className="bg-[#F9F9F9]">
-                                        <img src={Cup} alt="" />
+                                        <img src={Cup5} alt="" />
                                     </div>
                                     <div className="bg-white pr-[20px] absolute bottom-0 right-0 w-full h-[0] z-100 overflow-hidden   group-hover:h-[150px] duration-500 ease-in-out">
                                         <ul>
@@ -408,7 +415,7 @@ const Shop = () => {
                             <div className="w-[31%] pb-[50px] ">
                                 <div className="  relative group">
                                     <div className="bg-[#F9F9F9]">
-                                        <img src={Cup} alt="" />
+                                        <img src={Cup6} alt="" />
                                     </div>
                                     <div className="bg-white pr-[20px] absolute bottom-0 right-0 w-full h-[0] z-100 overflow-hidden   group-hover:h-[150px] duration-500 ease-in-out">
                                         <ul>
@@ -432,7 +439,7 @@ const Shop = () => {
                             <div className="w-[31%] pb-[50px] ">
                                 <div className="  relative group">
                                     <div className="bg-[#F9F9F9]">
-                                        <img src={Cup} alt="" />
+                                        <img src={Cup7} alt="" />
                                     </div>
                                     <div className="bg-white pr-[20px] absolute bottom-0 right-0 w-full h-[0] z-100 overflow-hidden   group-hover:h-[150px] duration-500 ease-in-out">
                                         <ul>
@@ -456,7 +463,7 @@ const Shop = () => {
                             <div className="w-[31%] pb-[50px] ">
                                 <div className="  relative group">
                                     <div className="bg-[#F9F9F9]">
-                                        <img src={Cup} alt="" />
+                                        <img src={Cup8} alt="" />
                                     </div>
                                     <div className="bg-white pr-[20px] absolute bottom-0 right-0 w-full h-[0] z-100 overflow-hidden   group-hover:h-[150px] duration-500 ease-in-out">
                                         <ul>
@@ -480,7 +487,7 @@ const Shop = () => {
                             <div className="w-[31%] pb-[50px] ">
                                 <div className="  relative group">
                                     <div className="bg-[#F9F9F9]">
-                                        <img src={Cup} alt="" />
+                                        <img src={Cup9} alt="" />
                                     </div>
                                     <div className="bg-white pr-[20px] absolute bottom-0 right-0 w-full h-[0] z-100 overflow-hidden   group-hover:h-[150px] duration-500 ease-in-out">
                                         <ul>
@@ -504,7 +511,7 @@ const Shop = () => {
                             <div className="w-[31%] pb-[50px] ">
                                 <div className="  relative group">
                                     <div className="bg-[#F9F9F9]">
-                                        <img src={Cup} alt="" />
+                                        <img src={Cup10} alt="" />
                                     </div>
                                     <div className="bg-white pr-[20px] absolute bottom-0 right-0 w-full h-[0] z-100 overflow-hidden   group-hover:h-[150px] duration-500 ease-in-out">
                                         <ul>

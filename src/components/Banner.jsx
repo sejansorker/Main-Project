@@ -37,7 +37,7 @@ const Bannner = () => {
           padding:"5px 0",
         }}
       >
-        {i + 1}
+        0{i + 1}
       </div>
     )
   };

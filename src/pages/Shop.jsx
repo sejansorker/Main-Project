@@ -73,14 +73,14 @@ const Shop = () => {
                             <h4 onClick={(() => SetcateShow(!cateShow))} className='flex justify-between items-center font-dm font-bold text-[20px] text-[#262626] pb-[30px]'>Shop by Category {cateShow ? <IoMdArrowDropup /> : <IoMdArrowDropdown />}</h4>
                             {cateShow &&
 
-                                <ul>
-                                    <li onClick={(() => SetcateShowOne(!cateShowOne))} className={`text-[#767676] text-[16px] font-dm font-bold  py-[19px] border-b-1 border-[#D8D8D8] ${cateShowOne ? "border-none" : ""}`}>
-                                        <div className="flex justify-between items-center">
+                                <ul className='mb-[50px]'>
+                                    <li onClick={(() => SetcateShowOne(!cateShowOne))} className={`text-[#767676] text-[16px] font-dm font-bold  py-[19px]  border-b-1 border-[#D8D8D8] ${cateShowOne ? "border-none" : ""}`}>
+                                        <div className="flex justify-between  items-center">
                                             Category 1 {cateShowOne ? <TiMinus /> : <FiPlus />}
                                         </div>
                                     </li>
                                     {cateShowOne &&
-                                        <div className="">
+                                        <div className="mb-[10px]">
                                             <ul>
                                                 <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 1.1</li>
                                                 <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 1.2</li>
@@ -94,7 +94,7 @@ const Shop = () => {
                                         {cateShowTwo ? <TiMinus /> : <FiPlus />}
                                     </li>
                                     {cateShowTwo &&
-                                        <div className="">
+                                        <div className="mb-[10px]">
                                             <ul>
                                                 <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 2.1</li>
                                                 <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 2.2</li>
@@ -108,7 +108,7 @@ const Shop = () => {
                                         {cateShowThree ? <TiMinus /> : <FiPlus />}
                                     </li>
                                     {cateShowThree &&
-                                        <div className="">
+                                        <div className="mb-[10px]">
                                             <ul>
                                                 <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 3.1</li>
                                                 <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 3.2</li>
@@ -122,7 +122,7 @@ const Shop = () => {
                                         {cateShowFour ? <TiMinus /> : <FiPlus />}
                                     </li>
                                     {cateShowFour &&
-                                        <div className="">
+                                        <div className="mb-[10px]">
                                             <ul>
                                                 <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 4.1</li>
                                                 <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 4.2</li>
@@ -136,7 +136,7 @@ const Shop = () => {
                                         {cateShowFive ? <TiMinus /> : <FiPlus />}
                                     </li>
                                     {cateShowFive &&
-                                        <div className="">
+                                        <div className="mb-[20px]">
                                             <ul>
                                                 <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 4.1</li>
                                                 <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 4.2</li>
@@ -157,7 +157,7 @@ const Shop = () => {
                             <h4 onClick={(() => SetLatShow(!letShow))} className='flex justify-between items-center font-dm font-bold text-[20px] text-[#262626] pb-[30px]'>Shop by Color {letShow ? <IoMdArrowDropup /> : <IoMdArrowDropdown />}</h4>
                             {letShow &&
 
-                                <ul>
+                                <ul className='mb-[50px]'>
                                     <li className='text-[#767676] text-[16px] font-dm pb-[19px] flex items-center gap-[10px] border-b-1 border-[#D8D8D8] font-bold'>
                                         <div className='h-[11px] w-[11px] bg-[#000] rounded-full'></div>
                                         Color 1
@@ -185,7 +185,7 @@ const Shop = () => {
                             <h4 onClick={(() => SetLatShowOne(!letShowOne))} className='flex justify-between items-center font-dm font-bold text-[20px] text-[#262626] pb-[30px]'>Shop by Brand {letShowOne ? <IoMdArrowDropup /> : <IoMdArrowDropdown />}</h4>
                             {letShowOne &&
 
-                                <ul>
+                                <ul className='mb-[50px]'>
                                     <li className='text-[#767676] text-[16px] font-dm pb-[19px] border-b-1 border-[#D8D8D8] font-bold'>
                                         Brand 1
                                     </li>

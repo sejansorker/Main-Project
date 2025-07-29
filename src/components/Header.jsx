@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const Header = () => {
   let [show, setShow] = useState(false)
   return (
-        <div className={` sticky py-[20px]  top-0  z-10 bg-[#FFFFFF]`}>
+        <div className={` sticky py-[20px]  top-0  z-1000 bg-[#FFFFFF]`}>
         <Container>
         <div className="lg:flex ">
           <div className="w-1/3">

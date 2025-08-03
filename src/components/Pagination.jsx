@@ -20,7 +20,7 @@ const Pagination = ({ pageNumber, paginate, currentPage, firstPage, lastPage, in
                     </li>
                     {pageNumber.map((item, i) => (
                         <li key={i} >
-                            <a onClick={() => paginate(i)} className={`flex  items-center justify-center px-4 h-10 leading-tight mx-[5px] rounded-full border border-gray-500 ${currentPage === i + 1 ? "bg-black text-white" : "bg-transparent"} `}>{item + 1}</a>
+                            <a onClick={() => paginate(i)} className={`flex hover:bg-black hover:text-white duration-300 ease-in-out items-center justify-center px-4 h-10 leading-tight mx-[5px] rounded-full border border-gray-500 ${currentPage === i + 1 ? "bg-black text-white" : "bg-transparent"} `}>{item + 1}</a>
                         </li>
                     ))}
                     <li>

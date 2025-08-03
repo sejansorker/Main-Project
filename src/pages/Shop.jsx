@@ -293,7 +293,7 @@ const Shop = () => {
                             </div>
                         </div>
                         <div className="flex flex-wrap justify-between">
-                                    <Page allData={allData} />
+                                    <Page allData={allData}/>
                             <Pagination pageNumber={pageNumber} paginate={paginate} currentPage={currentPage} perPage={perPage} firstPage={firstPage} lastPage={lastPage} info={info} />
                         </div>
                     </div>

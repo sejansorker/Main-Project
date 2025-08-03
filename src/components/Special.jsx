@@ -4,7 +4,7 @@ import { ApiProduct } from './ContextApi'
 import { FaHeart, FaShoppingCart } from 'react-icons/fa'
 import { IoGitCompare } from 'react-icons/io5'
 const Special = () => {
-    let data =useContext(ApiProduct)
+    let {info} =useContext(ApiProduct)
   return (
     <div className='pb-[100px]'>
         <Container>
@@ -12,7 +12,7 @@ const Special = () => {
             <h2 className='font-dm font-bold text-[39px] text-[#262626] pb-[40px]'>Special Offers</h2>
           </div>
             <div className="flex flex-wrap justify-between">
-                           {data.slice(24,28).map((item)=>(                    
+                           {info.slice(24,28).map((item)=>(                    
                          <div key={item.id} className="w-[24%] ">
                            <div className="  relative group">
                                <div className="bg-[#F9F9F9]">

@@ -5,13 +5,13 @@ import { FaHeart, FaShoppingCart } from 'react-icons/fa'
 import { IoGitCompare } from 'react-icons/io5'
 import { ApiProduct } from './ContextApi'
 const NewEx = () => {
-    let data =useContext(ApiProduct)
+    let {info} =useContext(ApiProduct)
   return (
       <>
     <div className='pt-[150px] pb-[120px]'>
         <Container>
              <div className="flex flex-wrap justify-between">
-                {data.slice(18,22).map((item)=>(                    
+                {info.slice(18,22).map((item)=>(                    
               <div key={item.id} className="w-[24%] ">
                 <div className="  relative group">
                     <div className="bg-[#F9F9F9]">

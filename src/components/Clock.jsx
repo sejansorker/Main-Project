@@ -1,6 +1,6 @@
 import React from 'react'
 import Container from './Container'
-import Sejan from "../assets/sejan.png"
+import Sejan from "../assets/clock.png"
 const Clock = () => {
   return (
     <div>

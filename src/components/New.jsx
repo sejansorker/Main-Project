@@ -42,7 +42,7 @@ const New = () => {
 
     ]
   };
-  let data = useContext(ApiProduct)
+  let {info} = useContext(ApiProduct)
   return (
     <div>
       <Container>
@@ -50,7 +50,7 @@ const New = () => {
           <h3 className='font-dm font-bold text-[39px] pb-[40px] text-[#262626]'>New Arrivals</h3>
         </div>
         <Slider {...settings} >
-          {data.map((item, index) => (
+          {info.map((item, index) => (
             <Link to="/shop">
               <div key={index} className="!w-[96%]">
                 <div className="relative group ">
@@ -77,6 +77,7 @@ const New = () => {
           ))}
         </Slider>
       </Container>
+      
     </div>
   )
 }

@@ -2,7 +2,8 @@ import React, { useContext } from 'react'
 import { FaHeart, FaShoppingCart } from 'react-icons/fa'
 import { IoGitCompare } from 'react-icons/io5'
 import { ApiProduct } from './ContextApi'
-const Page = ({ allData }) => {
+import { Link } from 'react-router-dom'
+const Page = ({ allData ,cateFilter}) => {
     let { loading } = useContext(ApiProduct)
         if (loading) {
             return (
@@ -21,12 +22,15 @@ const Page = ({ allData }) => {
         }
     return (
         <>
-            {allData.map((item) => (
+            {(cateFilter.length > 0 ? cateFilter : allData).map((item) => (
                 <div key={item.id} className="w-[32%] pb-[50px]">
                     <div className="relative group">
+                        <Link to={`/shop/${item.id}`}>
+                        
                         <div className="bg-[#F9F9F9]">
                             <img src={item.thumbnail} alt="" />
                         </div>
+                        </Link>
                         <div className="bg-white pr-[20px] absolute bottom-0 right-0 w-full h-[0] z-100 overflow-hidden   group-hover:h-[150px] duration-500 ease-in-out">
                             <ul>
                                 <li className='flex items-center text-[#767676] hover:text-[#262626] cursor-pointer text-[16px] font-bold font-dm  justify-end pt-[25px] gap-[15px]'>Add to Wish List <FaHeart /></li>

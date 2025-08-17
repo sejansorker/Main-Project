@@ -37,7 +37,7 @@ const Pagination = ({ pageNumber, paginate, currentPage, firstPage, lastPage, in
                     </li>
                 </ul>
             </nav>
-            <h4 className='pl-[330px]'>Products from {firstPage + 1} to {lastPage} of {info.length}</h4>
+            <h4 className='pl-[490px]'>Products from {firstPage + 1} to {lastPage} of {info.length}</h4>
         </div>
     )
 }

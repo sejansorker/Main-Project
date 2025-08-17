@@ -26,8 +26,6 @@ import { ApiProduct } from '../components/ContextApi'
 
 const Shop = () => {
     let {info} = useContext(ApiProduct)
-    
-    
     let [cateShow, setCateShow] = useState(false)
     let [cateShowOne, setCateShowOne] = useState(false)
     let [cateShowTwo, setCateShowTwo] = useState(false)
@@ -37,25 +35,30 @@ const Shop = () => {
     let [letShow, setLatShow] = useState(false)
     let [letShowOne, setLatShowOne] = useState(false)
     let [letShowThree, setLatShowThree] = useState(false)
+    let [cateFilter, setCateFilter] = useState([])
+    let [category, setCategory] = useState([])
+    let handleCategory = (citem)=>{
+          let cateFilter = info.filter((item)=>item.category == citem)
+          setCateFilter(cateFilter);
+          
+    }
+   
     let [perPage, setPerPage] = useState(6)
     let [currentPage, setCurrentPage] = useState(1)
     let lastPage = perPage * currentPage;
     let firstPage = lastPage - perPage
     let allData = info.slice(firstPage, lastPage)
-     
     let pageNumber = [];
-    
     for(let i = 0 ; i < Math.ceil(info.length / perPage); i++ ){
         pageNumber.push(i)
-        
     }
     let paginate = (index)=>{
        setCurrentPage(index + 1)
     }
-    
-   
-    
-    
+    useEffect(()=>{
+          setCategory([ ...new Set(info.map((item)=>item.category))])
+    },[info])
+ 
     return (
         <div>
             <Container>
@@ -95,91 +98,20 @@ const Shop = () => {
                 <div className="flex">
                     <div className="w-3/12 pb-[130px]">
                         <div className="">
-                            <h4 onClick={(() => setCateShow(!cateShow))} className='flex justify-between items-center font-dm font-bold text-[20px] text-[#262626] pb-[30px]'>Shop by Category {cateShow ? <IoMdArrowDropup /> : <IoMdArrowDropdown />}</h4>
+                            <h4 onClick={(() => setCateShow(!cateShow))} className='flex justify-between items-center font-dm font-bold text-[20px] text-[#262626] pb-[20px]'>Shop by Category {cateShow ? <IoMdArrowDropup /> : <IoMdArrowDropdown />}</h4>
                             {cateShow &&
+                                <ul className='mb-[10px]'>
+                                    {category.map((item)=>(
 
-                                <ul className='mb-[50px]'>
-                                    <li onClick={(() => setCateShowOne(!cateShowOne))} className={`text-[#767676] text-[16px] font-dm font-bold  py-[19px]  border-b-1 border-[#D8D8D8] ${cateShowOne ? "border-none" : ""}`}>
-                                        <div className="flex justify-between  items-center">
-                                            Category 1 {cateShowOne ? <TiMinus /> : <FiPlus />}
-                                        </div>
+                                    <li onClick={()=>handleCategory(item)} className={`text-[#767676] text-[16px] font-dm font-bold  py-[10px]`}>
+                                        <p className='capitalize '> {item}</p>
                                     </li>
-                                    {cateShowOne &&
-                                        <div className="mb-[10px]">
-                                            <ul>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 1.1</li>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 1.2</li>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 1.3</li>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 1.4</li>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 1.5</li>
-                                            </ul>
-                                        </div>
-                                    }
-                                    <li onClick={(() => setCateShowTwo(!cateShowTwo))} className={`text-[#767676] flex justify-between items-center text-[16px] font-dm font-bold  py-[19px] border-b-1 border-[#D8D8D8] ${cateShowTwo ? "border-none" : ""}`}>Category 2
-                                        {cateShowTwo ? <TiMinus /> : <FiPlus />}
-                                    </li>
-                                    {cateShowTwo &&
-                                        <div className="mb-[10px]">
-                                            <ul>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 2.1</li>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 2.2</li>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 2.3</li>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 2.4</li>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 2.5</li>
-                                            </ul>
-                                        </div>
-                                    }
-                                    <li onClick={(() => setCateShowThree(!cateShowThree))} className={`text-[#767676] flex justify-between items-center text-[16px] font-dm font-bold  py-[19px] border-b-1 border-[#D8D8D8] ${cateShowThree ? "border-none" : ""}`}>Category 3
-                                        {cateShowThree ? <TiMinus /> : <FiPlus />}
-                                    </li>
-                                    {cateShowThree &&
-                                        <div className="mb-[10px]">
-                                            <ul>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 3.1</li>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 3.2</li>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 3.3</li>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 3.4</li>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 3.5</li>
-                                            </ul>
-                                        </div>
-                                    }
-                                    <li onClick={(() => setCateShowFour(!cateShowFour))} className={`text-[#767676] flex justify-between items-center text-[16px] font-dm font-bold  py-[19px] border-b-1 border-[#D8D8D8] ${cateShowFour ? "border-none" : ""}`}>Category 4
-                                        {cateShowFour ? <TiMinus /> : <FiPlus />}
-                                    </li>
-                                    {cateShowFour &&
-                                        <div className="mb-[10px]">
-                                            <ul>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 4.1</li>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 4.2</li>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 4.3</li>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 4.4</li>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 4.5</li>
-                                            </ul>
-                                        </div>
-                                    }
-                                    <li onClick={(() => setCateShowFive(!cateShowFive))} className={`text-[#767676] flex justify-between items-center text-[16px] font-dm font-bold  py-[19px] border-b-1 border-[#D8D8D8] ${cateShowFive ? "border-none" : ""}`}>Category 5
-                                        {cateShowFive ? <TiMinus /> : <FiPlus />}
-                                    </li>
-                                    {cateShowFive &&
-                                        <div className="mb-[20px]">
-                                            <ul>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 4.1</li>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 4.2</li>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 4.3</li>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 4.4</li>
-                                                <li className='text-[#767676] text-[14px] py-[10px] border-b-1 border-[#D8D8D8] font-dm'>Category 4.5</li>
-                                            </ul>
-                                        </div>
-                                    }
-
-
-
-
+                                    ))}
                                 </ul>
                             }
                         </div>
                         <div className="">
-                            <h4 onClick={(() => setLatShow(!letShow))} className='flex justify-between items-center font-dm font-bold text-[20px] text-[#262626] pb-[30px]'>Shop by Color {letShow ? <IoMdArrowDropup /> : <IoMdArrowDropdown />}</h4>
+                            <h4 onClick={(() => setLatShow(!letShow))} className='flex justify-between items-center font-dm font-bold text-[20px] text-[#262626] pb-[20px]'>Shop by Color {letShow ? <IoMdArrowDropup /> : <IoMdArrowDropdown />}</h4>
                             {letShow &&
 
                                 <ul className='mb-[50px]'>
@@ -207,7 +139,7 @@ const Shop = () => {
                             }
                         </div>
                         <div className="">
-                            <h4 onClick={(() => setLatShowOne(!letShowOne))} className='flex justify-between items-center font-dm font-bold text-[20px] text-[#262626] pb-[30px]'>Shop by Brand {letShowOne ? <IoMdArrowDropup /> : <IoMdArrowDropdown />}</h4>
+                            <h4 onClick={(() => setLatShowOne(!letShowOne))} className='flex justify-between items-center font-dm font-bold text-[20px] text-[#262626] pb-[20px]'>Shop by Brand {letShowOne ? <IoMdArrowDropup /> : <IoMdArrowDropdown />}</h4>
                             {letShowOne &&
 
                                 <ul className='mb-[50px]'>
@@ -230,7 +162,7 @@ const Shop = () => {
                             }
                         </div>
                         <div className="">
-                            <h4 onClick={(() => setLatShowThree(!letShowThree))} className='flex justify-between items-center font-dm font-bold text-[20px] text-[#262626] pb-[30px]'>Shop by Price {letShowThree ? <IoMdArrowDropup /> : <IoMdArrowDropdown />}</h4>
+                            <h4 onClick={(() => setLatShowThree(!letShowThree))} className='flex justify-between items-center font-dm font-bold text-[20px] text-[#262626] pb-[20px]'>Shop by Price {letShowThree ? <IoMdArrowDropup /> : <IoMdArrowDropdown />}</h4>
                             {letShowThree &&
 
                                 <ul>
@@ -263,37 +195,31 @@ const Shop = () => {
                                     <FaThList />
                                 </div>
                             </div>
-                            <div className="flex pl-[280px] pr-[40px]">
+                            <div className="flex pl-[440px] pr-[40px]">
                                 <h4 className="pt-[6px] pr-[10px]">Sort by:</h4>
                                 <form className="w-[239px]">
-
                                     <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg   block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white ">
-
                                         <option>United States</option>
                                         <option>Canada</option>
                                         <option>France</option>
                                         <option>Germany</option>
                                     </select>
                                 </form>
-
                             </div>
                             <div className="flex">
                                 <h4 className="pt-[5px] pr-[10px]">Show:</h4>
                                 <form className="w-[139px]">
-
                                     <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white ">
-
                                         <option>36</option>
                                         <option>38</option>
                                         <option>40</option>
                                         <option>42</option>
                                     </select>
                                 </form>
-
                             </div>
                         </div>
                         <div className="flex flex-wrap justify-between">
-                                    <Page allData={allData}/>
+                                    <Page allData={allData} cateFilter={cateFilter} />
                             <Pagination pageNumber={pageNumber} paginate={paginate} currentPage={currentPage} perPage={perPage} firstPage={firstPage} lastPage={lastPage} info={info} />
                         </div>
                     </div>
@@ -302,5 +228,4 @@ const Shop = () => {
         </div>
     )
 }
-
 export default Shop

@@ -12,7 +12,7 @@ let router = createBrowserRouter(createRoutesFromChildren(
   <Route element={<Layout/>}>
     <Route path="/" element={<Home/>}></Route>
     <Route path="/shop" element={<Shop/>}></Route>
-    <Route path="/shop:id" element={<ProductDetails/>}></Route>
+    <Route path="/shop/:id" element={<ProductDetails/>}></Route>
     <Route path="/about" element={<About/>}></Route>
   </Route>
     <Route path="*" element={<Error/>}></Route>

@@ -1,9 +1,10 @@
 import React from 'react'
 
-const Pagination = ({ pageNumber, paginate, currentPage, firstPage, lastPage, info }) => {
+const Pagination = ({ pageNumber, paginate, currentPage, firstPage, lastPage, info,cateFilter }) => {
 
     return (
-        <div className="flex items-center pb-[60px]">
+       <>
+        {cateFilter.length > 0 ? null:<div className="flex items-center pb-[60px]">
             <nav aria-label="Page navigation example">
                 <ul className="flex items-center -space-x-px h-10 text-base">
                     <li >
@@ -38,7 +39,9 @@ const Pagination = ({ pageNumber, paginate, currentPage, firstPage, lastPage, in
                 </ul>
             </nav>
             <h4 className='pl-[490px]'>Products from {firstPage + 1} to {lastPage} of {info.length}</h4>
-        </div>
+        </div>}
+       </>
+        
     )
 }
 

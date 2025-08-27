@@ -37,10 +37,14 @@ const Shop = () => {
     let [letShowThree, setLatShowThree] = useState(false)
     let [cateFilter, setCateFilter] = useState([])
     let [category, setCategory] = useState([])
+    let [active, setActive] = useState([])
     let handleCategory = (citem)=>{
           let cateFilter = info.filter((item)=>item.category == citem)
           setCateFilter(cateFilter);
           
+    }
+    let handlelist= ()=>{
+        setActive(false)
     }
    
     let [perPage, setPerPage] = useState(6)
@@ -58,7 +62,6 @@ const Shop = () => {
     useEffect(()=>{
           setCategory([ ...new Set(info.map((item)=>item.category))])
     },[info])
- 
     return (
         <div>
             <Container>
@@ -191,7 +194,7 @@ const Shop = () => {
                                 <div className="h-[36px] w-[36px] flex justify-center items-center hover:text-white bg-white hover:bg-[#000]">
                                     <HiSquares2X2 />
                                 </div>
-                                <div className="h-[36px] w-[36px] flex justify-center items-center hover:text-white bg-white hover:bg-[#000]">
+                                <div className="h-[36px] w-[36px] flex justify-center items-center hover:text-white bg-white hover:bg-[#000]" onClick={handlelist}>
                                     <FaThList />
                                 </div>
                             </div>
@@ -218,9 +221,9 @@ const Shop = () => {
                                 </form>
                             </div>
                         </div>
-                        <div className="flex flex-wrap justify-between">
-                                    <Page allData={allData} cateFilter={cateFilter} />
-                            <Pagination pageNumber={pageNumber} paginate={paginate} currentPage={currentPage} perPage={perPage} firstPage={firstPage} lastPage={lastPage} info={info} />
+                        <div >
+                                    <Page allData={allData} cateFilter={cateFilter} active={active}/>
+                            <Pagination pageNumber={pageNumber} paginate={paginate} currentPage={currentPage} perPage={perPage} firstPage={firstPage} lastPage={lastPage} info={info} cateFilter={cateFilter}/>
                         </div>
                     </div>
                 </div>

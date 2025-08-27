@@ -1,10 +1,27 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { FaHeart, FaShoppingCart } from 'react-icons/fa'
 import { IoGitCompare } from 'react-icons/io5'
 import { ApiProduct } from './ContextApi'
 import { Link } from 'react-router-dom'
-const Page = ({ allData ,cateFilter}) => {
+const Page = ({ allData ,cateFilter ,active}) => {
     let { loading } = useContext(ApiProduct)
+    let [cateMain, setCateMain] = useState([])
+    let [showall , setShowall] = useState(true)
+    console.log(active);
+    
+    let handleshow=()=>{
+        setCateMain(cateFilter)
+         setShowall(false)
+    }
+    let handleless = ()=>{
+        setCateMain(cateFilter.slice(0,6));
+       setShowall(true)
+    }
+    useEffect(()=>{
+       let cateAll = cateFilter.slice(0,6);
+       setCateMain(cateAll)
+      
+    },[cateFilter])
         if (loading) {
             return (
                 <>
@@ -22,11 +39,13 @@ const Page = ({ allData ,cateFilter}) => {
         }
     return (
         <>
-            {(cateFilter.length > 0 ? cateFilter : allData).map((item) => (
-                <div key={item.id} className="w-[32%] pb-[50px]">
+        {cateFilter.length > 0 ? 
+        <div className="">
+            <div className={`flex flex-wrap gap-x-[20px] `}>
+            {cateMain.map((item) => (
+                    <div key={item.id} className="w-[32%] pb-[50px]">
                     <div className="relative group">
                         <Link to={`/shop/${item.id}`}>
-                        
                         <div className="bg-[#F9F9F9]">
                             <img src={item.thumbnail} alt="" />
                         </div>
@@ -51,6 +70,42 @@ const Page = ({ allData ,cateFilter}) => {
                     </div>
                 </div>
             ))}
+        </div>
+        {showall   ? cateFilter.length > 5 && <div className="pb-[50px]" onClick={handleshow}><h2 className='text-[14px] font-bold font-dm cursor-pointer'>Show All</h2></div> :cateFilter.length > 5 && <div className="pb-[50px]" onClick={handleless}><h2 className='text-[14px] font-bold font-dm cursor-pointer'>Show Less</h2></div> }
+        </div>
+        : 
+        <div className={`flex flex-wrap gap-x-[20px]`}>
+            {allData.map((item) => (
+                <div key={item.id} className="w-[32%] pb-[50px]">
+                    <div className="relative group">
+                        <Link to={`/shop/${item.id}`}>
+                        <div className="bg-[#F9F9F9]">
+                            <img src={item.thumbnail} alt="" />
+                        </div>
+                        </Link>
+                        <div className="bg-white pr-[20px] absolute bottom-0 right-0 w-full h-[0] z-100 overflow-hidden   group-hover:h-[150px] duration-500 ease-in-out">
+                            <ul>
+                                <li className='flex items-center text-[#767676] hover:text-[#262626] cursor-pointer text-[16px] font-bold font-dm  justify-end pt-[25px] gap-[15px]'>Add to Wish List <FaHeart /></li>
+                                <li className='flex items-center text-[#767676] hover:text-[#262626] cursor-pointer text-[16px] font-bold font-dm  justify-end py-[20px] gap-[15px]'>Compare <IoGitCompare /></li>
+                                <li className='flex items-center text-[#767676] hover:text-[#262626] cursor-pointer text-[16px] font-bold font-dm  justify-end pb-[25px] gap-[15px]'>Add to Cart <FaShoppingCart /></li>
+                            </ul>
+                        </div>
+                        <div className='absolute top-[20px] left-[20px]'>
+                            <a className="py-[8px] px-[30px]  bg-[#262626] inline-block text-[14px] font-bold font-dm text-white" href="#">New</a>
+                        </div>
+                    </div>
+                    <div className="">
+                        <div className="flex items-center justify-between pt-[24px] pb-[15px]">
+                            <h4 className='text-[18px] font-dm font-bold text-[#262626]'>{item.title}</h4>
+                            <p className='text-[14px] font-dm font-normal text-[#767676]'>${item.price}</p>
+                        </div>
+                        <h1 className='text-[16px] font-dm font-normal text-[#767676]'>Black</h1>
+                    </div>
+                </div>
+            ))}
+        </div>
+            }
+            
         </>
     )
 }

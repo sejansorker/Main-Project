@@ -20,6 +20,7 @@ const Page = ({ allData ,cateFilter ,active}) => {
     useEffect(()=>{
        let cateAll = cateFilter.slice(0,6);
        setCateMain(cateAll)
+       setShowall(true)
       
     },[cateFilter])
         if (loading) {
@@ -74,12 +75,12 @@ const Page = ({ allData ,cateFilter ,active}) => {
         {showall   ? cateFilter.length > 5 && <div className="pb-[50px]" onClick={handleshow}><h2 className='text-[14px] font-bold font-dm cursor-pointer'>Show All</h2></div> :cateFilter.length > 5 && <div className="pb-[50px]" onClick={handleless}><h2 className='text-[14px] font-bold font-dm cursor-pointer'>Show Less</h2></div> }
         </div>
         : 
-        <div className={`flex flex-wrap gap-x-[20px]`}>
+        <div className={`${active == "active" ? " flex flex-wrap justify-between": "flex flex-wrap gap-x-[20px]"} `}>
             {allData.map((item) => (
-                <div key={item.id} className="w-[32%] pb-[50px]">
+                <div key={item.id} className={` ${active == "active" ? " w-[48%] pb-[20px]" : " w-[32%] pb-[50px]"}`}>
                     <div className="relative group">
                         <Link to={`/shop/${item.id}`}>
-                        <div className="bg-[#F9F9F9]">
+                        <div className={`bg-[#F9F9F9] ${active == "active"  ? "pl-30" : ""}`}>
                             <img src={item.thumbnail} alt="" />
                         </div>
                         </Link>
@@ -105,7 +106,6 @@ const Page = ({ allData ,cateFilter ,active}) => {
             ))}
         </div>
             }
-            
         </>
     )
 }

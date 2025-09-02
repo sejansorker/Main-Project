@@ -13,7 +13,7 @@ import Pagination from '../components/Pagination'
 import { ApiProduct } from '../components/ContextApi'
 
 const Shop = () => {
-    let {info} = useContext(ApiProduct)
+    let { info } = useContext(ApiProduct)
     let [cateShow, setCateShow] = useState(false)
     let [cateShowOne, setCateShowOne] = useState(false)
     let [cateShowTwo, setCateShowTwo] = useState(false)
@@ -27,51 +27,52 @@ const Shop = () => {
     let [category, setCategory] = useState([])
     let [brand, setBrand] = useState([])
     let [active, setActive] = useState("")
-    let handleCategory = (citem)=>{
-          let cateFilter = info.filter((item)=>item.category == citem)
-          setCateFilter(cateFilter);
-          
+    let handleCategory = (citem) => {
+        let cateFilter = info.filter((item) => item.category == citem)
+        setCateFilter(cateFilter);
+
     }
-    let handlelist= ()=>{
+    let handlelist = () => {
         setActive("active")
     }
-   
+
     let [perPage, setPerPage] = useState(6)
     let [currentPage, setCurrentPage] = useState(1)
     let lastPage = perPage * currentPage;
     let firstPage = lastPage - perPage
     let allData = info.slice(firstPage, lastPage)
     let pageNumber = [];
-    for(let i = 0 ; i < Math.ceil(info.length / perPage); i++ ){
+    for (let i = 0; i < Math.ceil(info.length / perPage); i++) {
         pageNumber.push(i)
     }
-    let paginate = (index)=>{
-       setCurrentPage(index + 1)
+    let paginate = (index) => {
+        setCurrentPage(index + 1)
     }
-    useEffect(()=>{
-          setCategory([ ...new Set(info.map((item)=>item.category))])
-          setBrand([ ...new Set(info.map((item)=>item.brand))])
-          
-    },[info])
-    let handlenumber= (e)=>{
+    useEffect(() => {
+        setCategory([...new Set(info.map((item) => item.category))])
+        setBrand([...new Set(info.map((item) => item.brand))])
+
+    }, [info])
+    let handlenumber = (e) => {
         setPerPage(e.target.value);
-        
+
     }
     let [low, setLow] = useState()
     let [high, setHigh] = useState()
 
-    let handlePrice= (value)=>{
-      setLow(value.low);
-      setHigh(value.high);
-      let priceShow = info.filter((item)=>item.price >= value.low && item.price <= value.high )
-      setCateFilter(priceShow)
+    let handlePrice = (value) => {
+        setLow(value.low);
+        setHigh(value.high);
+        let priceShow = info.filter((item) => item.price >= value.low && item.price <= value.high)
+        setCateFilter(priceShow)
     }
-   let handleBrand = (bitem)=>{
-    let brandFilter = info.filter((item)=> item.brand == bitem)
-     setCateFilter(brandFilter)
-   }
-   
-   
+    let handleBrand = (bitem) => {
+        let brandFilter = info.filter((item) => item.brand == bitem)
+        setCateFilter(brandFilter)
+    }
+    let [activeCategory, setActiveCategory] = useState("")
+    let [activeBrand, setActiveBrand] = useState("")
+    let [priceActive, setPriceActive] = useState("")
     return (
         <div>
             <Container>
@@ -114,11 +115,11 @@ const Shop = () => {
                             <h4 onClick={(() => setCateShow(!cateShow))} className='flex justify-between items-center font-dm font-bold text-[20px] text-[#262626] pb-[20px]'>Shop by Category {cateShow ? <IoMdArrowDropup /> : <IoMdArrowDropdown />}</h4>
                             {cateShow &&
                                 <ul className='mb-[10px]'>
-                                    {category.map((item)=>(
+                                    {category.map((item) => (
 
-                                    <li onClick={()=>handleCategory(item)} className={`text-[#767676] text-[16px] font-dm font-bold  py-[10px]`}>
-                                        <p className='capitalize '> {item}</p>
-                                    </li>
+                                        <li onClick={() => {handleCategory(item); setActiveCategory(item)}} className={`text-[#767676] text-[16px] font-dm font-bold   `}>
+                                            <p  className={`capitalize py-[10px] ${activeCategory === item ? "bg-black text-white pl-[10px]" : ""}`}> {item}</p>
+                                        </li>
                                     ))}
                                 </ul>
                             }
@@ -156,13 +157,13 @@ const Shop = () => {
                             {letShowOne &&
 
                                 <ul className='mb-[50px]'>
-                                    {brand.map((item,i)=>(
-                                    <li key={i} onClick={()=>handleBrand(item)} className={`text-[#767676] text-[16px] font-dm pt-[10px] pb-[19px] font-bold 
-                                 ${i !== brand.length - 1 ? "border-b border-[#D8D8D8]" : ""}`}>
-                                        {item}
-                                    </li>
+                                    {brand.map((item, i) => (
+                                        <li key={i} onClick={() => { handleBrand(item), setActiveBrand(item)}} className={`text-[#767676] text-[16px] font-dm pt-[13px] pb-[15px] font-bold 
+                                 ${i !== brand.length - 1 ? "border-b border-[#D8D8D8] " : ""} ${activeBrand === item ? "bg-[#262626] text-white pl-2" : ""}`}>
+                                            {item}
+                                        </li>
                                     ))}
-                                    
+
                                 </ul>
                             }
                         </div>
@@ -171,22 +172,22 @@ const Shop = () => {
                             {letShowThree &&
 
                                 <ul>
-                                    <li onClick={()=>handlePrice({low:0, high:9.99})} className='text-[#767676] text-[16px] font-dm pb-[19px] border-b-1 border-[#D8D8D8] font-bold'>
-                                        $0.00 - $19.99
+                                    <li onClick={() => {handlePrice({ low: 0, high: 9.99 }); setPriceActive("0-19.99")}} className={`text-[#767676] text-[16px] font-dm  border-b-1 border-[#D8D8D8] font-bold `}>
+                                        <p className={`py-[19px]  ${priceActive === "0-19.99" ? "bg-black pl-2 text-white" : ""}`}>$0.00 - $19.99</p>
                                     </li>
-                                    <li onClick={()=>handlePrice({low:20, high:49.99})} className='text-[#767676] text-[16px] font-dm py-[19px] border-b-1 border-[#D8D8D8] font-bold'>
-                                        $20.00 - $49.99
+                                    <li onClick={() => {handlePrice({ low: 20, high: 49.99 }); setPriceActive("20-49.99")}} className='text-[#767676] text-[16px] font-dm  border-b-1 border-[#D8D8D8] font-bold '>
+                                        <p className={`py-[19px]  ${priceActive === "20-49.99" ? "bg-black pl-2 text-white" : ""}`}>$20.00 - $49.99</p>
                                     </li>
-                                    <li onClick={()=>handlePrice({low:50, high:99.99})} className='text-[#767676] text-[16px] font-dm py-[19px] border-b-1 border-[#D8D8D8] font-bold'>
-                                        $50.00 - $99.99
+                                    <li onClick={() => {handlePrice({ low: 50, high: 99.99 }); setPriceActive("50-99.99")}} className='text-[#767676] text-[16px] font-dm  border-b-1 border-[#D8D8D8] font-bold'>
+                                       <p className={`py-[19px]  ${priceActive === "50-99.99" ? "bg-black pl-2 text-white" : ""}`}> $50.00 - $99.99</p>
                                     </li>
-                                    <li onClick={()=>handlePrice({low:100, high:999.99})} className='text-[#767676] text-[16px] font-dm py-[19px] border-b-1 border-[#D8D8D8] font-bold'>
-                                        $100.00 - $999.99
+                                    <li onClick={() =>{handlePrice({ low: 100, high: 999.99 }); setPriceActive("100-999.99")}} className='text-[#767676] text-[16px] font-dm  border-b-1 border-[#D8D8D8] font-bold'>
+                                       <p className={`py-[19px]  ${priceActive === "100-999.99" ? "bg-black pl-2 text-white" : ""}`}> $100.00 - $999.99</p>
                                     </li>
-                                    <li onClick={()=>handlePrice({low:1000, high:1999.99})} className='text-[#767676] text-[16px] font-dm py-[19px] border-b-1 border-[#D8D8D8] font-bold'>
-                                        $1000.00 - $1999.99
+                                    <li onClick={() =>{handlePrice({low: 1000, high: 1999.99 }); setPriceActive("1000-1999.99") }} className='text-[#767676] text-[16px] font-dm  border-b-1 border-[#D8D8D8] font-bold'>
+                                        <p className={`py-[19px]  ${priceActive === "1000-1999.99" ? "bg-black pl-2 text-white" : ""}`}>$1000.00 - $1999.99</p>
                                     </li>
-                                   
+
                                 </ul>
                             }
                         </div>
@@ -194,7 +195,7 @@ const Shop = () => {
                     <div className="w-9/12 pl-[40px] ">
                         <div className="flex pb-[60px]">
                             <div className="flex gap-[12px] ">
-                                <div className={` ${active == "active" ?  "h-[36px] w-[36px] flex justify-center items-center hover:text-white bg-white hover:bg-[#000]": "h-[36px] w-[36px] flex justify-center items-center hover:text-white bg-[#262626] text-white hover:bg-[#000] "}`} onClick={()=>setActive("")}>
+                                <div className={` ${active == "active" ? "h-[36px] w-[36px] flex justify-center items-center hover:text-white bg-white hover:bg-[#000]" : "h-[36px] w-[36px] flex justify-center items-center hover:text-white bg-[#262626] text-white hover:bg-[#000] "}`} onClick={() => setActive("")}>
                                     <HiSquares2X2 />
                                 </div>
                                 <div className={` ${active == "active" ? "h-[36px] w-[36px] flex justify-center items-center hover:text-white bg-[#262626] text-white hover:bg-[#000]" : "h-[36px] w-[36px] flex justify-center items-center hover:text-white bg-white hover:bg-[#000]"}`} onClick={handlelist}>
@@ -225,8 +226,8 @@ const Shop = () => {
                             </div>
                         </div>
                         <div >
-                                    <Page allData={allData} cateFilter={cateFilter} active={active}/>
-                            <Pagination pageNumber={pageNumber} paginate={paginate} currentPage={currentPage} perPage={perPage} firstPage={firstPage} lastPage={lastPage} info={info} cateFilter={cateFilter}/>
+                            <Page allData={allData} cateFilter={cateFilter} active={active} />
+                            <Pagination pageNumber={pageNumber} paginate={paginate} currentPage={currentPage} perPage={perPage} firstPage={firstPage} lastPage={lastPage} info={info} cateFilter={cateFilter} />
                         </div>
                     </div>
                 </div>

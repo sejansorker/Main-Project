@@ -20,8 +20,8 @@ const Header = () => {
             <ul className={`lg:flex gap-x-10 lg:py-0 py-[10px]  lg:text-start text-center duration-500 ease-in-out ${show == true ? " bg-[rgba(120,185,181,0.33)] lg:mt-0 mt-3" : "  lg:mt-0 mt-[-190px]"}`}>
               <li><Link to={"/"} className='font-dm text-[#767676] font-normal text-[14px] hover:text-[#262626]'>Home</Link></li>
               <li><Link to={"/shop"} className='font-dm text-[#767676] font-normal text-[14px] hover:text-[#262626]'>Shop</Link></li>
-              <li><Link to={"/*"} className='font-dm text-[#767676] font-normal text-[14px] hover:text-[#262626]'>About</Link></li>
-              <li><Link to={"/*"} className='font-dm text-[#767676] font-normal text-[14px] hover:text-[#262626]'>Contacts</Link></li>
+              <li><Link to={"/about"} className='font-dm text-[#767676] font-normal text-[14px] hover:text-[#262626]'>About</Link></li>
+              <li><Link to={"/contect"} className='font-dm text-[#767676] font-normal text-[14px] hover:text-[#262626]'>Contacts</Link></li>
               <li><Link to={"/*"} className='font-dm text-[#767676] font-normal text-[14px] hover:text-[#262626]'>Journal</Link></li>
             </ul>
           </div>

@@ -90,7 +90,7 @@ const ProductDetails = () => {
             <div className="flex gap-[73px] items-center">
               <h4 className='text-[16px] font-dm font-bold text-[#262626]'>SIZE:</h4>
               <div className="">
-                <select className='w-35 border-2 px-4 py-1 border-[#F0F0F0] focus:outline-0'>
+                <select className='w-35 border-2 px-4 py-1 cursor-pointer border-[#F0F0F0] focus:outline-0'>
                   <option value="" >S</option>
                   <option value="" >M</option>
                   <option value="" >L</option>
@@ -100,7 +100,7 @@ const ProductDetails = () => {
             </div>
             <div className="flex items-center py-8 space-x-7">
               <h5 className='text-[16px] font-dm font-bold text-[#262626]'>QUANTITY:</h5>
-              <div className="flex items-center px-3 py-[2px] border-2 border-[#F0F0F0] gap-x-12">
+              <div className="flex items-center px-3 py-[4px] border-2 cursor-pointer border-[#F0F0F0] gap-x-12">
                 <p className='text-[#767676] text-[16px] font-dm font-normal '>-</p>
                 <p className='text-[#767676] text-[16px] font-dm font-normal '>1</p>
                 <p className='text-[#767676] text-[16px] font-dm font-normal '>+</p>
@@ -113,8 +113,8 @@ const ProductDetails = () => {
             </div>
             <hr className='text-[#D8D8D8]' />
             <div className="flex items-center gap-x-5 py-7.5">
-              <p className='py-4 px-11 border-2 border-[#262626] text-[14px] text-[#262626] font-dm font-bold hover:text-white hover:bg-black duration-300 ease-in-out'>Add to Wish List</p>
-              <p className='py-4 px-11 border-2 border-[#262626] text-[14px] text-[#262626] font-dm font-bold hover:text-white hover:bg-black duration-300 ease-in-out'>Add to Cart</p>
+              <p className='py-4 px-11 border-2 cursor-pointer border-[#262626] text-[14px] text-[#262626] font-dm font-bold hover:text-white hover:bg-black duration-300 ease-in-out'>Add to Wish List</p>
+              <p className='py-4 px-11 border-2 cursor-pointer border-[#262626] text-[14px] text-[#262626] font-dm font-bold hover:text-white hover:bg-black duration-300 ease-in-out'>Add to Cart</p>
             </div>
             <hr className='text-[#D8D8D8]' />
             <div onClick={(() => setOpen(!open))} className="flex justify-between py-6 cursor-pointer">

@@ -5,6 +5,7 @@ import About from "./pages/About"
 import Error from "./pages/Error"
 import Shop from "./pages/Shop"
 import ProductDetails from "./pages/ProductDetails"
+import Contect from "./pages/Contect"
 
 let router = createBrowserRouter(createRoutesFromChildren(
   
@@ -14,6 +15,7 @@ let router = createBrowserRouter(createRoutesFromChildren(
     <Route path="/shop" element={<Shop/>}></Route>
     <Route path="/shop/:id" element={<ProductDetails/>}></Route>
     <Route path="/about" element={<About/>}></Route>
+    <Route path="/contect" element={<Contect/>}></Route>
   </Route>
     <Route path="*" element={<Error/>}></Route>
   </>

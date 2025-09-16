@@ -7,6 +7,7 @@ import { IoMdArrowDropdown } from 'react-icons/io'
 import { MdKeyboardArrowRight } from 'react-icons/md'
 import { RxCross2 } from 'react-icons/rx'
 import Div from "../assets/div.png"
+import { Link } from 'react-router-dom'
 
 
 
@@ -157,7 +158,9 @@ const Navbar = () => {
                                     </div>
                                     <div className=" hover:bg-white">
                                         <ul className='flex gap-[10px] lg:gap-[20px] '>
-                                            <li className='lg:py-[16px] py-[8px] border-2 ease-in-out duration-500 hover:bg-black cursor-pointer hover:text-white border-[#2B2B2B] px-[15px] lg:px-[40px] font-bold text-[10px] lg:text-[14px] text-[#262626] font-dm'>View Cart</li>
+                                            <Link to={"/cart"}>
+                                            <li  className='lg:py-[16px] py-[8px] border-2 ease-in-out duration-500 hover:bg-black cursor-pointer hover:text-white border-[#2B2B2B] px-[15px] lg:px-[40px] font-bold text-[10px] lg:text-[14px] text-[#262626] font-dm'>View Cart</li>
+                                            </Link>
                                             <li className='lg:py-[16px] py-[8px] cursor-pointer border-2 ease-in-out duration-500 hover:bg-black hover:text-white border-[#2B2B2B] px-[20px] lg:px-[43px] font-bold text-[12px] lg:text-[14px] text-[#262626] font-dm'>Checkout</li>
                                         </ul>
                                     </div>

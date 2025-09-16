@@ -3,7 +3,11 @@ import React, { useEffect, useState } from 'react'
 import { FaMinus, FaPlus, FaStar } from 'react-icons/fa'
 import { Link, useParams } from 'react-router-dom'
 import Container from '../components/Container'
+import ProductRating from '../components/ProductRating'
+import { useDispatch } from 'react-redux'
+import { cartTotal } from '../slice/cartSlice'
 const ProductDetails = () => {
+  const dispatce = useDispatch()
   let ProductId = useParams()
   let [singleData, setSingleData] = useState({})
   let getSingleData = () => {
@@ -15,6 +19,10 @@ const ProductDetails = () => {
 
     getSingleData()
   })
+  const handleAdd = ()=>{
+    console.log("ami");
+    dispatce(cartTotal(singleData))
+  }
   const [shop, setShop] = useState(false)
   const [open, setOpen] = useState(false)
   const [activeTab, setActiveTab] = useState("description");
@@ -57,24 +65,29 @@ const ProductDetails = () => {
               </ol>
             </nav>
           </div>
-          <div className="w-2/4">
-            <div className="bg-[#D8D8D8] mb-24">
-              <img className='w-full h-[680px]' src={singleData.thumbnail} alt="" />
+          <div className=" w-full">
+            <div className=" mb-24 flex flex-wrap gap-8 justify-between">
+              {singleData?.images?.map((img)=>(
+                  <img className='w-[48%] bg-[#D8D8D8]' src={img} alt="" />
+              ))}
             </div>
           </div>
           <div className="w-1/2 mb-10">
             <h2 className='text-3xl font-bold text-[#262626] font-dm py-8'>{singleData.title}</h2>
             <div className="flex items-center gap-x-6 pb-6">
-              <div className="flex text-[#FFD881]">
-                <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
+              <div className="flex ">
+                {/* <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar /> */}
+                <ProductRating rating={singleData.rating}/>
               </div>
-              <div className="text-[14px] font-dm font-normal">
-                <h4>1 Review</h4>
+              <div className="text-[14px] flex items-center space-x-5 font-dm font-normal">
+                <h3>Rating {singleData.rating}</h3>
+                <h5>|</h5>
+                <h4>{singleData?.reviews?.length} Review</h4>
               </div>
             </div>
             <div className="flex items-center space-x-6 font-dm pb-6">
               <del className='text-[#767676] text-[16px] font-normal'>$88.00</del>
-              <h4 className='text-[#262626] text-[20px] font-bold'>$44.00</h4>
+              <h4 className='text-[#262626] text-[20px] font-bold'>${singleData.price}</h4>
 
             </div>
             <hr className='text-[#D8D8D8]' />
@@ -109,12 +122,12 @@ const ProductDetails = () => {
             <hr className='text-[#D8D8D8]' />
             <div className="flex items-center font-dm py-6">
               <h5 className='text-[16px] font-bold text-[#262626]'>STATUS:</h5>
-              <p className='text-[16px] font-normal text-[#767676]'>In stock</p>
+              <p className='text-[16px] font-normal pl-5 text-[#767676]'>{singleData.availabilityStatus}</p>
             </div>
             <hr className='text-[#D8D8D8]' />
             <div className="flex items-center gap-x-5 py-7.5">
               <p className='py-4 px-11 border-2 cursor-pointer border-[#262626] text-[14px] text-[#262626] font-dm font-bold hover:text-white hover:bg-black duration-300 ease-in-out'>Add to Wish List</p>
-              <p className='py-4 px-11 border-2 cursor-pointer border-[#262626] text-[14px] text-[#262626] font-dm font-bold hover:text-white hover:bg-black duration-300 ease-in-out'>Add to Cart</p>
+              <p onClick={handleAdd} className='py-4 px-11 border-2 cursor-pointer border-[#262626] text-[14px] text-[#262626] font-dm font-bold hover:text-white hover:bg-black duration-300 ease-in-out'>Add to Cart</p>
             </div>
             <hr className='text-[#D8D8D8]' />
             <div onClick={(() => setOpen(!open))} className="flex justify-between py-6 cursor-pointer">

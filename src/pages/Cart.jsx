@@ -77,7 +77,7 @@ console.log(singleData);
             <div className="flex py-1 items-center px-5 border-2 border-[#F0F0F0] w-fit gap-9">
                 <p className='font-dm font-bold text-[16px] text-[#262626]'>-</p>
                 <p className='font-dm font-bold text-[16px] text-[#262626]'>1</p>
-                <p className='font-dm font-bold text-[16px] text-[#262626]'>+</p>
+                <p className='font-dm font-bold text-[16px] text-[#262626]'>+1</p>
             </div>
             </div>
             <div className="w-1/4">
